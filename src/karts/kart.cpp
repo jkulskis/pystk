@@ -919,7 +919,7 @@ void Kart::collectedItem(ItemState *item_state)
     switch (type)
     {
     case Item::ITEM_BANANA:
-        m_attachment->hitBanana(item_state);
+        // m_attachment->hitBanana(item_state);
         break;
     case Item::ITEM_NITRO_SMALL:
         m_collected_energy += m_kart_properties->getNitroSmallContainer();
@@ -933,20 +933,20 @@ void Kart::collectedItem(ItemState *item_state)
             break;
         }
     case Item::ITEM_BUBBLEGUM:
-        m_has_caught_nolok_bubblegum = 
-            (item_state->getPreviousOwner()&&
-             item_state->getPreviousOwner()->getIdent() == "nolok");
+        // m_has_caught_nolok_bubblegum = 
+        //     (item_state->getPreviousOwner()&&
+        //      item_state->getPreviousOwner()->getIdent() == "nolok");
 
-        // slow down
-        m_bubblegum_ticks = (int16_t)stk_config->time2Ticks(
-            m_kart_properties->getBubblegumDuration());
-        m_bubblegum_torque_sign =
-            ((World::getWorld()->getTicksSinceStart() / 10) % 2 == 0) ?
-            true : false;
-        m_max_speed->setSlowdown(MaxSpeed::MS_DECREASE_BUBBLE,
-                                 m_kart_properties->getBubblegumSpeedFraction() ,
-                                 m_kart_properties->getBubblegumFadeInTicks(),
-                                 m_bubblegum_ticks);
+        // // slow down
+        // m_bubblegum_ticks = (int16_t)stk_config->time2Ticks(
+        //     m_kart_properties->getBubblegumDuration());
+        // m_bubblegum_torque_sign =
+        //     ((World::getWorld()->getTicksSinceStart() / 10) % 2 == 0) ?
+        //     true : false;
+        // m_max_speed->setSlowdown(MaxSpeed::MS_DECREASE_BUBBLE,
+        //                          m_kart_properties->getBubblegumSpeedFraction() ,
+        //                          m_kart_properties->getBubblegumFadeInTicks(),
+        //                          m_bubblegum_ticks);
         break;
     default        : break;
     }   // switch TYPE
